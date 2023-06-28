@@ -1,11 +1,8 @@
 import "./App.css";
-import OrderTrackingForm from "./pages/OrderTrackingForm";
 function App() {
   return;
   <>
-    <Routes>
-      <Route path="/" element={<OrderTrackingForm />} />
-    </Routes>
+    <h1 className="text-3xl font-bold underline">Hello world!</h1>
   </>;
 }
 
