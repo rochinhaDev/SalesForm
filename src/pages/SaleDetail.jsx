@@ -21,7 +21,7 @@ export default function SaleDetail() {
   if (!sale) {
     return <div>Carregando...</div>;
   }
-
+  console.log(sale);
   return (
     <div key={sale.cliente}>
       <h2>Detalhes do Pedido</h2>
@@ -31,7 +31,7 @@ export default function SaleDetail() {
       <p>Data da Venda: {sale.dataDeVenda}</p>
       <p>Status: {sale.status}</p>
       {sale.entregas.map((entrega) => (
-        <p key={entrega.id}>{entrega.dataDeEntrega}</p>
+        <p key={entrega.value}>{entrega.dataDeEntrega}</p>
       ))}
       <button onClick={handleAddDelivery}>Adicionar entrega</button>
     </div>
