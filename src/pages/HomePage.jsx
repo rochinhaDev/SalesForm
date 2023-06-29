@@ -88,8 +88,7 @@ export default function HomePage() {
             name="status"
             onChange={handleChange}
           />
-          <input type="text" value={form.entregas.date} name="date" />
-          <input type="value" value={form.entregas.value} name="value" />
+          
           <button type="submit" onClick={handleSubmit}>
             Adicionar Venda
           </button>
