@@ -38,6 +38,7 @@ export default function HomePage() {
       date: "",
       value: "",
     });
+    
     console.log(form);
   }
   return (

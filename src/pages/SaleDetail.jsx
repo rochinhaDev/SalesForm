@@ -23,7 +23,7 @@ export default function SaleDetail() {
   }
   console.log(sale);
   return (
-    <div key={sale.cliente}>
+    <div key={sale.cliente}className="flex">
       <h2>Detalhes do Pedido</h2>
       <p>Cliente: {sale.cliente}</p>
       <p>Valor Original: {sale.valorTotalDoPedido}</p>
