@@ -38,7 +38,7 @@ export default function HomePage() {
       date: "",
       value: "",
     });
-    
+
     console.log(form);
   }
   return (
@@ -58,38 +58,43 @@ export default function HomePage() {
         ))}
       </div>
       <div>
-        <form>
+        <form onSubmit={handleSubmit} className="flex flex-col">
           <input
             type="text"
             value={form.cliente}
             name="cliente"
             onChange={handleChange}
+            placeholder="Cliente"
           />
           <input
             type="text"
             value={form.valorTotalDoPedido}
             name="valorTotalDoPedido"
             onChange={handleChange}
+            placeholder="Valor total do pedido"
           />
           <input
             type="text"
             value={form.vendedor}
             name="vendedor"
             onChange={handleChange}
+            placeholder="Vendedor"
           />
           <input
-            type="dataDevenda"
+            type="date"
             value={form.dataDeVenda}
             name="dataDeVenda"
             onChange={handleChange}
+            placeholder="Data da Venda"
           />
           <input
             type="text"
             value={form.status}
             name="status"
             onChange={handleChange}
+            placeholder="Status"
           />
-          
+
           <button type="submit" onClick={handleSubmit}>
             Adicionar Venda
           </button>

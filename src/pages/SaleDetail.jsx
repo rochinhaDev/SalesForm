@@ -23,16 +23,22 @@ export default function SaleDetail() {
   }
   console.log(sale);
   return (
-    <div key={sale.cliente}className="flex">
+    <div key={sale.cliente} className="flex">
       <h2>Detalhes do Pedido</h2>
       <p>Cliente: {sale.cliente}</p>
       <p>Valor Original: {sale.valorTotalDoPedido}</p>
       <p>Vendedor: {sale.vendedor}</p>
       <p>Data da Venda: {sale.dataDeVenda}</p>
       <p>Status: {sale.status}</p>
-      {sale.entregas.map((entrega) => (
-        <p key={entrega.value}>{entrega.dataDeEntrega}</p>
-      ))}
+      <div key={sale.entregas} className="flex">
+        {sale.entregas.map((entrega) => (
+          <div key={entrega.value}>
+            <p>Valor:{entrega.value}</p>
+            <p>Data:{entrega.date}</p>
+          </div>
+        ))}
+      </div>
+
       <button onClick={handleAddDelivery}>Adicionar entrega</button>
     </div>
   );
