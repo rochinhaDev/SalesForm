@@ -47,24 +47,25 @@ export default function HomePage() {
         {sales.map((sale) => (
           <div className="card flex flex-row justify-between" key={sale._id}>
             <h2>
-              <p>Cliente: {sale.cliente}</p>
+              <p className="border-2">Cliente: {sale.cliente}</p>
             </h2>
-            <p>Valor Original: {sale.valorTotalDoPedido}</p>
-            <p>Vendedor: {sale.vendedor}</p>
+            <p className="border-2">Valor Original: {sale.valorTotalDoPedido}</p>
+            <p className="border-2" >Vendedor: {sale.vendedor}</p>
             <Link to={`/sales/${sale._id}`}>
-              <button>Detalhes da venda</button>
+              <button className="border-2">Detalhes da venda</button>
             </Link>
           </div>
         ))}
       </div>
       <div>
-        <form onSubmit={handleSubmit} className="flex flex-col">
+        <form onSubmit={handleSubmit} className="flex flex-col border-2">
           <input
             type="text"
             value={form.cliente}
             name="cliente"
             onChange={handleChange}
             placeholder="Cliente"
+            className="border-2"
           />
           <input
             type="text"
@@ -72,6 +73,7 @@ export default function HomePage() {
             name="valorTotalDoPedido"
             onChange={handleChange}
             placeholder="Valor total do pedido"
+            className="border-2"
           />
           <input
             type="text"
@@ -79,6 +81,7 @@ export default function HomePage() {
             name="vendedor"
             onChange={handleChange}
             placeholder="Vendedor"
+            className="border-2"
           />
           <input
             type="date"
@@ -86,6 +89,7 @@ export default function HomePage() {
             name="dataDeVenda"
             onChange={handleChange}
             placeholder="Data da Venda"
+            className="border-2"
           />
           <input
             type="text"
@@ -93,9 +97,10 @@ export default function HomePage() {
             name="status"
             onChange={handleChange}
             placeholder="Status"
+            className="border-2"
           />
 
-          <button type="submit" onClick={handleSubmit}>
+          <button type="submit" onClick={handleSubmit} className="border-2">
             Adicionar Venda
           </button>
         </form>

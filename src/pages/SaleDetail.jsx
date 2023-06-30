@@ -39,7 +39,9 @@ export default function SaleDetail() {
         ))}
       </div>
 
-      <button onClick={handleAddDelivery}>Adicionar entrega</button>
+      <button onClick={handleAddDelivery} className="border-2 ">
+        Adicionar entrega
+      </button>
     </div>
   );
 }
