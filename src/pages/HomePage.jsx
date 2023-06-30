@@ -28,6 +28,14 @@ export default function HomePage() {
   }
   function handleSubmit(e) {
     e.preventDefault();
+    try {
+      const response = axios.post(
+        "https://webdev103.cyclic.app/salesform",
+        form
+      );
+    } catch (error) {
+      console.log(error);
+    }
     setSales([...sales, form]);
     setForm({
       cliente: "",
@@ -49,8 +57,10 @@ export default function HomePage() {
             <h2>
               <p className="border-2">Cliente: {sale.cliente}</p>
             </h2>
-            <p className="border-2">Valor Original: {sale.valorTotalDoPedido}</p>
-            <p className="border-2" >Vendedor: {sale.vendedor}</p>
+            <p className="border-2">
+              Valor Original: {sale.valorTotalDoPedido}
+            </p>
+            <p className="border-2">Vendedor: {sale.vendedor}</p>
             <Link to={`/sales/${sale._id}`}>
               <button className="border-2">Detalhes da venda</button>
             </Link>
