@@ -11,6 +11,7 @@ export default function HomePage() {
     vendedor: "",
     dataDeVenda: "",
     status: "",
+    entregas: [],
   });
 
   useEffect(() => {
@@ -69,6 +70,7 @@ export default function HomePage() {
       </div>
       <div>
         <form onSubmit={handleSubmit} className="flex flex-col border-2">
+          {}
           <input
             type="text"
             value={form.cliente}
