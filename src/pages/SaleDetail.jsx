@@ -27,11 +27,11 @@ export default function SaleDetail() {
   }
 
   async function handleSubmit(e) {
-    e.prevemtDefault();
+    e.preventDefault();
     try {
       const response = await axios.put(
         `https://webdev103.cyclic.app/salesform/${params.id}`,
-        { entregas: [...sale.entregas, form] }
+        { entregas: [...sale.entregas, { value: form.value, date: form.date }] }
       );
       setReload(!reload);
       setForm({
@@ -55,7 +55,7 @@ export default function SaleDetail() {
   }
   console.log(sale);
   return (
-    <div key={sale.cliente} className="flex">
+    <div key={sale.cliente} className="flex flex-col justify-center align-center">
       <h2>Detalhes do Pedido</h2>
       <p>Cliente: {sale.cliente}</p>
       <p>Valor Original: {sale.valorTotalDoPedido}</p>
@@ -77,7 +77,7 @@ export default function SaleDetail() {
           </button>
         )}
         {showForm && (
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className="flex flex-col">
             <input
               type="text"
               name="value"
