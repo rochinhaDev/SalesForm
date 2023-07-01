@@ -89,7 +89,7 @@ export default function HomePage() {
               className="border-2"
             />
             <input
-              type="text"
+              type="number"
               value={form.valorTotalDoPedido}
               name="valorTotalDoPedido"
               onChange={handleChange}
