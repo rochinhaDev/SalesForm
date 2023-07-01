@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 export default function SaleDetail() {
   const navigate = useNavigate();
@@ -13,6 +14,7 @@ export default function SaleDetail() {
   //Esse objeto será adicionado dentro da array de entregas
   const [showForm, setShowForm] = useState(false);
   const [reload, setReload] = useState(false);
+  const [totalEntregas, setTotalEntregas] = useState(0);
   useEffect(() => {
     async function fetchSale() {
       const response = await axios.get(
@@ -28,6 +30,14 @@ export default function SaleDetail() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    const newValue = parseInt(form.value);
+    const originalValue = parseInt(sale.valorTotalDoPedido);
+    if (newValue > originalValue) {
+      toast.error(
+        "O valor total da entrega, não pode ser maior que o valor total do pedido"
+      );
+      return;
+    }
     try {
       const response = await axios.put(
         `https://webdev103.cyclic.app/salesform/${params.id}`,
@@ -38,6 +48,7 @@ export default function SaleDetail() {
         value: "",
         date: "",
       });
+      setShowForm(false);
     } catch (error) {
       console.log(error);
     }
@@ -53,9 +64,17 @@ export default function SaleDetail() {
   if (!sale) {
     return <div>Carregando...</div>;
   }
+  const somaValores = sale.entregas.reduce((acumulador, entrega) => {
+    return acumulador + parseInt(entrega.value);
+  }, 0);
   console.log(sale);
+  const valorOriginal = parseInt(sale.valorTotalDoPedido);
+  const addDelivery = somaValores < valorOriginal;
   return (
-    <div key={sale.cliente} className="flex flex-col justify-center align-center">
+    <div
+      key={sale.cliente}
+      className="flex flex-col justify-center align-center"
+    >
       <h2>Detalhes do Pedido</h2>
       <p>Cliente: {sale.cliente}</p>
       <p>Valor Original: {sale.valorTotalDoPedido}</p>
@@ -71,26 +90,31 @@ export default function SaleDetail() {
         ))}
       </div>
       <div>
-        {!showForm && (
+        <h2>Total entregue:{somaValores}</h2>
+      </div>
+      <div>
+        {!showForm && addDelivery && (
           <button onClick={() => setShowForm(true)} className="border-2">
             Adicionar entrega
           </button>
         )}
         {showForm && (
-          <form onSubmit={handleSubmit} className="flex flex-col">
+          <form onSubmit={handleSubmit} className="flex flex-col border-2">
             <input
               type="text"
               name="value"
               value={form.value}
               onChange={handleChange}
+              className="card"
             />
             <input
               type="date"
               name="date"
               value={form.date}
               onChange={handleChange}
+              className="card"
             />
-            <button onClick={handleSubmit} className="border-2 ">
+            <button type="submit" className="border-2 ">
               Adicionar entrega
             </button>
             <button onClick={() => setShowForm(false)} className="border-2">
