@@ -14,7 +14,6 @@ export default function SaleDetail() {
   const [showForm, setShowForm] = useState(false);
   const [reload, setReload] = useState(false);
   const [totalEntregas, setTotalEntregas] = useState(0);
-
   useEffect(() => {
     async function fetchSale() {
       const response = await axios.get(
@@ -24,11 +23,19 @@ export default function SaleDetail() {
     }
     fetchSale();
   }, [params.id, reload]);
-
-  function handleChange(e) {
-    setForm({ ...form, [e.target.name]: e.target.value });
+  function formatDate(date) {
+    const [year, month, day] = date.split("-");
+    return `${day}/${month}/${year}`;
   }
-
+  function handleChange(e) {
+    const { name, value } = e.target;
+    if (name === "date") {
+      const formattedDate = formatDate(value);
+      setForm({ ...form, [name]: formattedDate });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
+  }
   async function handleSubmit(e) {
     e.preventDefault();
     const newValue = parseInt(form.value);
@@ -54,7 +61,6 @@ export default function SaleDetail() {
       console.log(error);
     }
   }
-
   async function handleDelete() {
     const response = await axios.delete(
       `https://webdev103.cyclic.app/salesform/${params.id}`
@@ -62,18 +68,14 @@ export default function SaleDetail() {
     console.log(response);
     navigate("/");
   }
-
   if (!sale) {
     return <div>Carregando...</div>;
   }
-
   const somaValores = sale.entregas.reduce((acumulador, entrega) => {
     return acumulador + parseInt(entrega.value);
   }, 0);
-
   const valorOriginal = parseInt(sale.valorTotalDoPedido);
   const addDelivery = somaValores < valorOriginal;
-
   return (
     <div className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between items-center mb-4">
       <h2 className="text-2xl font-bold mb-4">Detalhes do Pedido</h2>
@@ -81,12 +83,15 @@ export default function SaleDetail() {
         <p className="mb-2">Cliente: {sale.cliente}</p>
         <p className="mb-2">Valor Original: {sale.valorTotalDoPedido}</p>
         <p className="mb-2">Vendedor: {sale.vendedor}</p>
-        <p className="mb-2">Data da Venda: {sale.dataDeVenda}</p>
+        <p className="mb-2">Data da Venda: {formatDate(sale.dataDeVenda)}</p>
         <p className="mb-2">Status: {sale.status}</p>
       </div>
       <div className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between items-center mb-4">
         {sale.entregas.map((entrega) => (
-          <div key={entrega.value} className="mr-4">
+          <div
+            key={entrega.value}
+            className="mr-4 flex flex-col justify-between items-center"
+          >
             <p>Valor: {entrega.value}</p>
             <p>Data: {entrega.date}</p>
           </div>
@@ -99,7 +104,7 @@ export default function SaleDetail() {
         {!showForm && addDelivery && (
           <button
             onClick={() => setShowForm(true)}
-            className="border-2 px-4 py-2 mr-2"
+            className="mb-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-green-600"
           >
             Adicionar entrega
           </button>
@@ -122,7 +127,10 @@ export default function SaleDetail() {
               placeholder="Data da entrega"
               className="border-2 mb-2 p-2"
             />
-            <button type="submit" className="border-2 px-4 py-2 mr-2">
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-green-600"
+            >
               Adicionar entrega
             </button>
             <button
@@ -137,7 +145,7 @@ export default function SaleDetail() {
       <div className="flex flex-col justify-between items-center">
         <button
           onClick={handleDelete}
-          className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-green-600"
+          className="px-4 py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-600"
         >
           Deletar Venda
         </button>

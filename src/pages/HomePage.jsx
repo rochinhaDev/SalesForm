@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import SaleDetail from "./SaleDetail";
-
 export default function HomePage() {
   const [sales, setSales] = useState([]);
   const [form, setForm] = useState({
@@ -15,7 +13,6 @@ export default function HomePage() {
   });
   const [showForm, setShowForm] = useState(false);
   const [reload, setReload] = useState(false);
-
   useEffect(() => {
     async function fetchSales() {
       const response = await axios.get(
@@ -25,11 +22,9 @@ export default function HomePage() {
     }
     fetchSales();
   }, [reload]);
-
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
-
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -52,7 +47,6 @@ export default function HomePage() {
       console.log(error);
     }
   }
-
   return (
     <div className="bg-gray-100 bg-no-repeat">
       <div>
@@ -81,13 +75,12 @@ export default function HomePage() {
           <div className="flex justify-center">
             <button
               onClick={() => setShowForm(true)}
-              className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-green-600"
+              className="mb-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-green-600"
             >
               Adicionar Venda
             </button>
           </div>
         )}
-
         {showForm && (
           <form onSubmit={handleSubmit} className="flex flex-col border-2 p-4">
             <input
@@ -130,10 +123,9 @@ export default function HomePage() {
               placeholder="Status"
               className="border-2 mb-2 p-2"
             />
-
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-green-600"
+              className="mb-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-green-600"
             >
               Adicionar Venda
             </button>
