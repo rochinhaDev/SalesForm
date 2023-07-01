@@ -13,6 +13,8 @@ export default function HomePage() {
     status: "",
     entregas: [],
   });
+  const [showForm, setShowForm] = useState(false);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     async function fetchSales() {
@@ -22,34 +24,35 @@ export default function HomePage() {
       setSales(response.data);
     }
     fetchSales();
-  }, []);
-  console.log(sales);
+  }, [reload]);
+
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }
-  function handleSubmit(e) {
+
+  async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = axios.post(
+      const response = await axios.post(
         "https://webdev103.cyclic.app/salesform",
         form
       );
+      console.log(response.data);
+      setForm({
+        cliente: "",
+        valorTotalDoPedido: "",
+        vendedor: "",
+        dataDeVenda: "",
+        status: "",
+        entregas: [],
+      });
+      setShowForm(false);
+      setReload(!reload);
     } catch (error) {
       console.log(error);
     }
-    setSales([...sales, form]);
-    setForm({
-      cliente: "",
-      valorTotalDoPedido: "",
-      vendedor: "",
-      dataDeVenda: "",
-      status: "",
-      date: "",
-      value: "",
-    });
-
-    console.log(form);
   }
+
   return (
     <div>
       <div>
@@ -69,53 +72,63 @@ export default function HomePage() {
         ))}
       </div>
       <div>
-        <form onSubmit={handleSubmit} className="flex flex-col border-2">
-          {}
-          <input
-            type="text"
-            value={form.cliente}
-            name="cliente"
-            onChange={handleChange}
-            placeholder="Cliente"
-            className="border-2"
-          />
-          <input
-            type="text"
-            value={form.valorTotalDoPedido}
-            name="valorTotalDoPedido"
-            onChange={handleChange}
-            placeholder="Valor total do pedido"
-            className="border-2"
-          />
-          <input
-            type="text"
-            value={form.vendedor}
-            name="vendedor"
-            onChange={handleChange}
-            placeholder="Vendedor"
-            className="border-2"
-          />
-          <input
-            type="date"
-            value={form.dataDeVenda}
-            name="dataDeVenda"
-            onChange={handleChange}
-            placeholder="Data da Venda"
-            className="border-2"
-          />
-          <input
-            type="text"
-            value={form.status}
-            name="status"
-            onChange={handleChange}
-            placeholder="Status"
-            className="border-2"
-          />
-
-          <button type="submit" onClick={handleSubmit} className="border-2">
+        {!showForm && (
+          <button onClick={() => setShowForm(true)} className="border-2">
             Adicionar Venda
           </button>
-        </form>
+        )}
+
+        {showForm && (
+          <form onSubmit={handleSubmit} className="flex flex-col border-2">
+            <input
+              type="text"
+              value={form.cliente}
+              name="cliente"
+              onChange={handleChange}
+              placeholder="Cliente"
+              className="border-2"
+            />
+            <input
+              type="text"
+              value={form.valorTotalDoPedido}
+              name="valorTotalDoPedido"
+              onChange={handleChange}
+              placeholder="Valor total do pedido"
+              className="border-2"
+            />
+            <input
+              type="text"
+              value={form.vendedor}
+              name="vendedor"
+              onChange={handleChange}
+              placeholder="Vendedor"
+              className="border-2"
+            />
+            <input
+              type="date"
+              value={form.dataDeVenda}
+              name="dataDeVenda"
+              onChange={handleChange}
+              placeholder="Data da Venda"
+              className="border-2"
+            />
+            <input
+              type="text"
+              value={form.status}
+              name="status"
+              onChange={handleChange}
+              placeholder="Status"
+              className="border-2"
+            />
+
+            <button type="submit" className="border-2">
+              Adicionar Venda
+            </button>
+            <button onClick={() => setShowForm(false)} className="border-2">
+              Cancelar
+            </button>
+          </form>
+        )}
       </div>
     </div>
   );

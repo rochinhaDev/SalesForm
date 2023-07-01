@@ -6,7 +6,7 @@ export default function SaleDetail() {
   const navigate = useNavigate();
   const params = useParams();
   const [sale, setSale] = useState(null);
-  const [delivery, setDelivery] = useState({
+  const [form, setForm] = useState({
     value: "",
     date: "",
   });
