@@ -69,7 +69,7 @@ export default function HomePage() {
               <p>Vendedor: {sale.vendedor}</p>
             </div>
             <Link to={`/sales/${sale._id}`}>
-              <button className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">
+              <button className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-green-600">
                 Detalhes da venda
               </button>
             </Link>
@@ -81,7 +81,7 @@ export default function HomePage() {
           <div className="flex justify-center">
             <button
               onClick={() => setShowForm(true)}
-              className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600"
+              className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-green-600"
             >
               Adicionar Venda
             </button>
@@ -133,7 +133,7 @@ export default function HomePage() {
 
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600"
+              className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-green-600"
             >
               Adicionar Venda
             </button>
