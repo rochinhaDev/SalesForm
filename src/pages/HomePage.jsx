@@ -52,7 +52,7 @@ export default function HomePage() {
       <div>
         {sales.map((sale) => (
           <div
-            className="bg-white rounded-lg shadow-md p-4 flex justify-between items-center mb-4"
+            className="bg-white rounded-lg shadow-md p-4 flex justify-between items-center mb-4 mx-4"
             key={sale._id}
           >
             <div>
