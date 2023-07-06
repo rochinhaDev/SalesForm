@@ -52,7 +52,7 @@ export default function HomePage() {
       <div>
         {sales.map((sale) => (
           <div
-            className="bg-white rounded-lg shadow-md p-4 flex justify-between items-center mb-4 mx-4"
+            className="bg-white rounded-lg shadow-md p-4 flex justify-between items-center mb-4 border mx-4 border-t-8 border-blue-500"
             key={sale._id}
           >
             <div>
@@ -89,7 +89,7 @@ export default function HomePage() {
               name="cliente"
               onChange={handleChange}
               placeholder="Cliente"
-              className="border-2 mb-2 p-2"
+              className="border-t-2 mb-2 p-2"
             />
             <input
               type="number"

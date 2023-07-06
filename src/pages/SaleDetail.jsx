@@ -136,13 +136,13 @@ export default function SaleDetail() {
             />
             <button
               type="submit"
-              className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-green-600"
+              className="mb-4 px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-green-600"
             >
               Adicionar entrega
             </button>
             <button
               onClick={() => setShowForm(false)}
-              className="border-2 px-4 py-2"
+              className="mb-4 px-4 py-2 bg-green-500 text-white font-semibold rounded hover:bg-green-600"
             >
               Cancelar
             </button>
@@ -152,7 +152,7 @@ export default function SaleDetail() {
       <div className="flex flex-col justify-between items-center">
         <button
           onClick={handleDelete}
-          className=" flex px-4 py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-600"
+          className="mb-4 flex px-4 py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-600"
         >
           Deletar Venda
           <TrashIcon className="bg-noneh-6 w-6 text-white" />
