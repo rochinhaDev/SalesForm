@@ -76,7 +76,7 @@ export default function SaleDetail() {
     return acumulador + parseInt(entrega.value);
   }, 0);
   const valorOriginal = parseInt(sale.valorTotalDoPedido);
-  const addDelivery = somaValores > valorOriginal;
+  const addDelivery = somaValores < valorOriginal;
   return (
     <div className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between items-center m-16 border">
       <h2 className="text-2xl font-bold mb-4">Detalhes do Pedido</h2>
