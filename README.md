@@ -2,6 +2,8 @@
 
 Este é um projeto de exemplo que demonstra um CRUD (Create, Read, Update, Delete) básico utilizando React.js. O objetivo deste projeto é criar um formulário de vendas onde os usuários podem adicionar, visualizar, atualizar e excluir registros de vendas.
 
+**Demo**: [SalesForm Demo](https://salesform.netlify.app/)
+
 ## Funcionalidades
 
 O SalesForm possui as seguintes funcionalidades:
