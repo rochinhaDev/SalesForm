@@ -90,7 +90,7 @@ export default function SaleDetail() {
       </div>
       <div className="bg-white rounded-lg shadow-md p-4 flex flex-col justify-between items-start mb-4 w-2/4 border-t-8 border-blue-500">
         {sale.entregas.map((entrega) => (
-          <div key={entrega._id} className="flex flex-col w-full">
+          <div key={entrega._id} className="flex flex-col w-full ">
             <div className="flex justify-between">
               <p>
                 Valor: <span className="font-thin">R${entrega.value},00</span>
@@ -155,7 +155,7 @@ export default function SaleDetail() {
           className="mb-4 flex px-4 py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-600"
         >
           Deletar Venda
-          <TrashIcon className="bg-noneh-6 w-6 text-white" />
+          <TrashIcon className="bg-none h-6 w-6 text-white" />
         </button>
       </div>
     </div>
