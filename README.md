@@ -37,11 +37,19 @@ A estrutura do projeto é organizada da seguinte forma:
 3. package.json
 
 - O diretório src/ contém os componentes React utilizados para construir o formulário de vendas, a navbar e a lista de vendas.
-- O arquivo src/App.js contém a lógica principal do aplicativo, incluindo o estado do componente e as funções para adicionar, editar e excluir vendas.
-- O arquivo src/index.js é o ponto de entrada do aplicativo React.
+- O arquivo src/App.jsx contém a lógica principal do aplicativo, incluindo o estado do componente e as funções para adicionar, editar e excluir vendas.
+- O arquivo src/HomePage.jsx é o ponto de entrada do aplicativo React.
 
 ## Contribuição
 
 Sinta-se à vontade para contribuir com melhorias para este projeto. Se você tiver alguma sugestão, abra uma nova issue ou envie um pull request com suas alterações.
 
 Espero que este README.md tenha fornecido uma visão geral clara do projeto SalesForm e como executá-lo. Se você tiver alguma dúvida adicional, não hesite em perguntar.
+
+## Agradecimento
+
+Agradeço por conferir este projeto! Espero que tenha sido útil para você entender o funcionamento básico de um CRUD em React.js. Se tiver alguma dúvida, feedback ou sugestão, sinta-se à vontade para entrar em contato.
+
+Aproveite e continue aprendendo e construindo coisas incríveis!
+
+Obrigado!
