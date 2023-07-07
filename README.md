@@ -24,16 +24,17 @@ Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 ## Estrutura do projeto
 
 A estrutura do projeto é organizada da seguinte forma:
-SalesForm/
-├── src/
-│ ├── components/
-│ │ ├── Navbar.jsx
-| ├── pages/
-│ │ ├── HomePage.jsx
-│ │ ├── SaleDetail.jsx
-│ | ├── App.jsx
-├── README.md
-├── package.json
+
+1. SalesForm/
+   - src/
+     - components/
+       - Navbar.jsx
+     - pages/
+       - HomePage.jsx
+       - SaleDetail.jsx
+   - App.jsx
+2. README.md
+3. package.json
 
 - O diretório src/ contém os componentes React utilizados para construir o formulário de vendas, a navbar e a lista de vendas.
 - O arquivo src/App.js contém a lógica principal do aplicativo, incluindo o estado do componente e as funções para adicionar, editar e excluir vendas.
