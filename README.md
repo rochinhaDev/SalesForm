@@ -36,8 +36,8 @@ SalesForm/
 ├── package.json
 
 - O diretório src/ contém os componentes React utilizados para construir o formulário de vendas, a navbar e a lista de vendas.
-  O arquivo src/App.js contém a lógica principal do aplicativo, incluindo o estado do componente e as funções para adicionar, editar e excluir vendas.
-  O arquivo src/index.js é o ponto de entrada do aplicativo React.
+- O arquivo src/App.js contém a lógica principal do aplicativo, incluindo o estado do componente e as funções para adicionar, editar e excluir vendas.
+- O arquivo src/index.js é o ponto de entrada do aplicativo React.
 
 ## Contribuição
 
