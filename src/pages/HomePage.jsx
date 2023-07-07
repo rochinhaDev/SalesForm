@@ -59,7 +59,7 @@ export default function HomePage() {
               <h2 className="text-lg font-bold mb-2">
                 Cliente: {sale.cliente}
               </h2>
-              <p>Valor Original: {sale.valorTotalDoPedido}</p>
+              <p>Valor Original: R${sale.valorTotalDoPedido},00</p>
               <p>Vendedor: {sale.vendedor}</p>
             </div>
             <Link to={`/sales/${sale._id}`}>
